@@ -1,0 +1,23 @@
+name: nest-starter
+
+services:
+  db:
+    image: postgres:15
+    container_name: nest-starter-db
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - nest-ntw
+
+volumes:
+  db-data:
+
+networks:
+  nest-ntw:
