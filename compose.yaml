@@ -4,7 +4,6 @@ services:
   dev-db:
     image: postgres:15
     container_name: nest-starter-db
-    restart: unless-stopped
     ports:
       - 5432:5432
     environment:
@@ -20,7 +19,6 @@ services:
   test-db:
     image: postgres:15
     container_name: nest-test-db
-    restart: unless-stopped
     ports:
       - 5433:5432
     environment:
