@@ -1,0 +1,38 @@
+name: nest-starter
+
+services:
+  dev-db:
+    image: postgres:15
+    container_name: nest-starter-db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - nest-ntw
+
+
+  test-db:
+    image: postgres:15
+    container_name: nest-test-db
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    volumes:
+      - test-data:/var/lib/postgresql/data
+    networks:
+      - nest-ntw
+
+volumes:
+  db-data:
+  test-data:
+
+networks:
+  nest-ntw:
